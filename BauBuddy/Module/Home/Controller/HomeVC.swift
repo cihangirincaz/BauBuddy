@@ -17,16 +17,10 @@ class HomeVC: UIViewController, UITableViewDelegate {
     //MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        APIManager.shared.login { success in
-            if success {
-                APIManager.shared.fetchTasks {
-                    print("Globals data: \(Globals.shared.tasks)")
-                    self.tableView.dataSource = self
-                    self.tableView.delegate = self
-                    self.tableView.reloadData()
-                }
-            }
-        }
+        print("Globals data: \(Globals.shared.tasks)")
+        self.tableView.dataSource = self
+        self.tableView.delegate = self
+        self.tableView.reloadData()
         self.navigationController?.isNavigationBarHidden = true
         setupUI()
         

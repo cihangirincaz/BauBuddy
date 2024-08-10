@@ -14,14 +14,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-//        APIManager.shared.initializeAppData()
-        let window = UIWindow(frame: UIScreen.main.bounds)
-        let rootViewController = TabbarController()
-        let navigationController = UINavigationController(rootViewController: rootViewController)
-        navigationController.setNavigationBarHidden(true, animated: false)
-        window.rootViewController = navigationController
-        window.makeKeyAndVisible()
-        self.window = window
+        APIManager.shared.initializeAppData { success in
+            if success {
+                let window = UIWindow(frame: UIScreen.main.bounds)
+                let rootViewController = TabbarController()
+                let navigationController = UINavigationController(rootViewController: rootViewController)
+                navigationController.setNavigationBarHidden(true, animated: false)
+                window.rootViewController = navigationController
+                window.makeKeyAndVisible()
+                self.window = window
+                   print("Data was successfully extracted.")
+               } else {
+                   print("Data retrieval failed.")
+               }
+        }
         return true
     }
     // MARK: - Core Data stack

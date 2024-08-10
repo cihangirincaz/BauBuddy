@@ -60,12 +60,16 @@ class APIManager {
         }
     }
     
-    func initializeAppData(){
-        login { success in
+    func initializeAppData(completion: @escaping (Bool) -> Void) {
+        APIManager.shared.login { success in
             if success {
-                self.fetchTasks {
-                    print("Globals data: \(Globals.shared.tasks)")
+                APIManager.shared.fetchTasks {
+                    print("Tasks were successfully pulled!")
+                    completion(true)
                 }
+            } else {
+                print("Login failed.")
+                completion(false)
             }
         }
     }
