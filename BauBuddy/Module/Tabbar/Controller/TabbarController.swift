@@ -52,6 +52,10 @@ class TabbarController: UITabBarController {
         }
     }
     @objc func QRButtonClicked(){
-        print("qr button clicked")
+        let destinationVC = QRCodeScannerVC()
+        destinationVC.hero.isEnabled = true
+        destinationVC.hero.modalAnimationType = .slide(direction: .up)
+        destinationVC.modalPresentationStyle = .fullScreen
+        present(destinationVC, animated: true)
     }
 }
