@@ -8,24 +8,41 @@
 
 /* Begin PBXBuildFile section */
 		79EAAF352C6807720081A634 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79EAAF342C6807720081A634 /* AppDelegate.swift */; };
-		79EAAF372C6807720081A634 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79EAAF362C6807720081A634 /* SceneDelegate.swift */; };
-		79EAAF392C6807720081A634 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79EAAF382C6807720081A634 /* ViewController.swift */; };
-		79EAAF3C2C6807720081A634 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 79EAAF3B2C6807720081A634 /* Base */; };
 		79EAAF3F2C6807720081A634 /* BauBuddy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 79EAAF3D2C6807720081A634 /* BauBuddy.xcdatamodeld */; };
 		79EAAF412C6807730081A634 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 79EAAF402C6807730081A634 /* Assets.xcassets */; };
-		79EAAF442C6807730081A634 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 79EAAF432C6807730081A634 /* Base */; };
+		79EAAF532C6808300081A634 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79EAAF522C68082E0081A634 /* Task.swift */; };
+		79EAAF552C68085D0081A634 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79EAAF542C6808580081A634 /* APIManager.swift */; };
+		79EAAF572C6808730081A634 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79EAAF562C6808720081A634 /* UIColor+Extensions.swift */; };
+		79EAAF592C6808890081A634 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79EAAF582C6808870081A634 /* Globals.swift */; };
+		79EAAF672C6808FB0081A634 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79EAAF662C6808F70081A634 /* SettingsVC.swift */; };
+		79EAAF692C68090F0081A634 /* TopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79EAAF682C68090C0081A634 /* TopView.swift */; };
+		79EAAF6B2C6809250081A634 /* TabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79EAAF6A2C6809210081A634 /* TabbarController.swift */; };
+		79EAAF6D2C68093E0081A634 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79EAAF6C2C68093D0081A634 /* HomeTableViewCell.swift */; };
+		79EAAF6F2C6809500081A634 /* HomeTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79EAAF6E2C68094C0081A634 /* HomeTableView.swift */; };
+		79EAAF712C6809630081A634 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79EAAF702C6809600081A634 /* HomeVC.swift */; };
+		79EAAF732C6809A90081A634 /* MyCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79EAAF722C6809A00081A634 /* MyCollectionVC.swift */; };
+		79EAAF762C6809FA0081A634 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 79EAAF752C6809FA0081A634 /* Alamofire */; };
+		79EAAF792C680A300081A634 /* Hero in Frameworks */ = {isa = PBXBuildFile; productRef = 79EAAF782C680A300081A634 /* Hero */; };
+		79EAAF7C2C680A400081A634 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 79EAAF7B2C680A400081A634 /* SnapKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		79EAAF312C6807720081A634 /* BauBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BauBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		79EAAF342C6807720081A634 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		79EAAF362C6807720081A634 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		79EAAF382C6807720081A634 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		79EAAF3B2C6807720081A634 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		79EAAF3E2C6807720081A634 /* BauBuddy.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BauBuddy.xcdatamodel; sourceTree = "<group>"; };
 		79EAAF402C6807730081A634 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		79EAAF432C6807730081A634 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		79EAAF452C6807730081A634 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		79EAAF522C68082E0081A634 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		79EAAF542C6808580081A634 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		79EAAF562C6808720081A634 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
+		79EAAF582C6808870081A634 /* Globals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
+		79EAAF662C6808F70081A634 /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
+		79EAAF682C68090C0081A634 /* TopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopView.swift; sourceTree = "<group>"; };
+		79EAAF6A2C6809210081A634 /* TabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarController.swift; sourceTree = "<group>"; };
+		79EAAF6C2C68093D0081A634 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
+		79EAAF6E2C68094C0081A634 /* HomeTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableView.swift; sourceTree = "<group>"; };
+		79EAAF702C6809600081A634 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
+		79EAAF722C6809A00081A634 /* MyCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCollectionVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +50,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				79EAAF7C2C680A400081A634 /* SnapKit in Frameworks */,
+				79EAAF792C680A300081A634 /* Hero in Frameworks */,
+				79EAAF762C6809FA0081A634 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,16 +78,183 @@
 		79EAAF332C6807720081A634 /* BauBuddy */ = {
 			isa = PBXGroup;
 			children = (
-				79EAAF342C6807720081A634 /* AppDelegate.swift */,
-				79EAAF362C6807720081A634 /* SceneDelegate.swift */,
-				79EAAF382C6807720081A634 /* ViewController.swift */,
-				79EAAF3A2C6807720081A634 /* Main.storyboard */,
-				79EAAF402C6807730081A634 /* Assets.xcassets */,
-				79EAAF422C6807730081A634 /* LaunchScreen.storyboard */,
+				79EAAF4B2C6807E80081A634 /* App */,
+				79EAAF4C2C6807ED0081A634 /* Module */,
 				79EAAF452C6807730081A634 /* Info.plist */,
 				79EAAF3D2C6807720081A634 /* BauBuddy.xcdatamodeld */,
 			);
 			path = BauBuddy;
+			sourceTree = "<group>";
+		};
+		79EAAF4B2C6807E80081A634 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				79EAAF512C68081A0081A634 /* Models */,
+				79EAAF7D2C680AE80081A634 /* Resources */,
+				79EAAF502C6808100081A634 /* Delegate */,
+				79EAAF4F2C68080B0081A634 /* Manager */,
+				79EAAF4E2C6808010081A634 /* Extensions */,
+				79EAAF4D2C6807FC0081A634 /* Helpers */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		79EAAF4C2C6807ED0081A634 /* Module */ = {
+			isa = PBXGroup;
+			children = (
+				79EAAF5C2C6808B10081A634 /* Tabbar */,
+				79EAAF5B2C6808A90081A634 /* Home */,
+				79EAAF5A2C6808A10081A634 /* My Collection */,
+				79EAAF5D2C6808B60081A634 /* Settings */,
+			);
+			path = Module;
+			sourceTree = "<group>";
+		};
+		79EAAF4D2C6807FC0081A634 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				79EAAF582C6808870081A634 /* Globals.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		79EAAF4E2C6808010081A634 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				79EAAF562C6808720081A634 /* UIColor+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		79EAAF4F2C68080B0081A634 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				79EAAF542C6808580081A634 /* APIManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		79EAAF502C6808100081A634 /* Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				79EAAF342C6807720081A634 /* AppDelegate.swift */,
+			);
+			path = Delegate;
+			sourceTree = "<group>";
+		};
+		79EAAF512C68081A0081A634 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				79EAAF522C68082E0081A634 /* Task.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		79EAAF5A2C6808A10081A634 /* My Collection */ = {
+			isa = PBXGroup;
+			children = (
+				79EAAF5F2C6808C40081A634 /* View */,
+				79EAAF5E2C6808BF0081A634 /* Controller */,
+			);
+			path = "My Collection";
+			sourceTree = "<group>";
+		};
+		79EAAF5B2C6808A90081A634 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				79EAAF612C6808D00081A634 /* View */,
+				79EAAF602C6808C90081A634 /* Controller */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		79EAAF5C2C6808B10081A634 /* Tabbar */ = {
+			isa = PBXGroup;
+			children = (
+				79EAAF632C6808DA0081A634 /* View */,
+				79EAAF622C6808D40081A634 /* Controller */,
+			);
+			path = Tabbar;
+			sourceTree = "<group>";
+		};
+		79EAAF5D2C6808B60081A634 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				79EAAF652C6808E60081A634 /* View */,
+				79EAAF642C6808DF0081A634 /* Controller */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		79EAAF5E2C6808BF0081A634 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				79EAAF722C6809A00081A634 /* MyCollectionVC.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		79EAAF5F2C6808C40081A634 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		79EAAF602C6808C90081A634 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				79EAAF702C6809600081A634 /* HomeVC.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		79EAAF612C6808D00081A634 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				79EAAF6E2C68094C0081A634 /* HomeTableView.swift */,
+				79EAAF6C2C68093D0081A634 /* HomeTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		79EAAF622C6808D40081A634 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				79EAAF6A2C6809210081A634 /* TabbarController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		79EAAF632C6808DA0081A634 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				79EAAF682C68090C0081A634 /* TopView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		79EAAF642C6808DF0081A634 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				79EAAF662C6808F70081A634 /* SettingsVC.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		79EAAF652C6808E60081A634 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		79EAAF7D2C680AE80081A634 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				79EAAF402C6807730081A634 /* Assets.xcassets */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -86,6 +273,11 @@
 			dependencies = (
 			);
 			name = BauBuddy;
+			packageProductDependencies = (
+				79EAAF752C6809FA0081A634 /* Alamofire */,
+				79EAAF782C680A300081A634 /* Hero */,
+				79EAAF7B2C680A400081A634 /* SnapKit */,
+			);
 			productName = BauBuddy;
 			productReference = 79EAAF312C6807720081A634 /* BauBuddy.app */;
 			productType = "com.apple.product-type.application";
@@ -114,6 +306,11 @@
 				Base,
 			);
 			mainGroup = 79EAAF282C6807720081A634;
+			packageReferences = (
+				79EAAF742C6809FA0081A634 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				79EAAF772C680A300081A634 /* XCRemoteSwiftPackageReference "Hero" */,
+				79EAAF7A2C680A400081A634 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = 79EAAF322C6807720081A634 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -129,8 +326,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				79EAAF412C6807730081A634 /* Assets.xcassets in Resources */,
-				79EAAF442C6807730081A634 /* Base in Resources */,
-				79EAAF3C2C6807720081A634 /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,33 +336,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				79EAAF392C6807720081A634 /* ViewController.swift in Sources */,
+				79EAAF552C68085D0081A634 /* APIManager.swift in Sources */,
+				79EAAF572C6808730081A634 /* UIColor+Extensions.swift in Sources */,
+				79EAAF592C6808890081A634 /* Globals.swift in Sources */,
 				79EAAF3F2C6807720081A634 /* BauBuddy.xcdatamodeld in Sources */,
+				79EAAF532C6808300081A634 /* Task.swift in Sources */,
 				79EAAF352C6807720081A634 /* AppDelegate.swift in Sources */,
-				79EAAF372C6807720081A634 /* SceneDelegate.swift in Sources */,
+				79EAAF6F2C6809500081A634 /* HomeTableView.swift in Sources */,
+				79EAAF6D2C68093E0081A634 /* HomeTableViewCell.swift in Sources */,
+				79EAAF692C68090F0081A634 /* TopView.swift in Sources */,
+				79EAAF712C6809630081A634 /* HomeVC.swift in Sources */,
+				79EAAF6B2C6809250081A634 /* TabbarController.swift in Sources */,
+				79EAAF732C6809A90081A634 /* MyCollectionVC.swift in Sources */,
+				79EAAF672C6808FB0081A634 /* SettingsVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		79EAAF3A2C6807720081A634 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				79EAAF3B2C6807720081A634 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		79EAAF422C6807730081A634 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				79EAAF432C6807730081A634 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		79EAAF462C6807730081A634 /* Debug */ = {
@@ -300,7 +485,6 @@
 				INFOPLIST_FILE = BauBuddy/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -327,7 +511,6 @@
 				INFOPLIST_FILE = BauBuddy/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -365,6 +548,51 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		79EAAF742C6809FA0081A634 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.9.1;
+			};
+		};
+		79EAAF772C680A300081A634 /* XCRemoteSwiftPackageReference "Hero" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/HeroTransitions/Hero";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.6.3;
+			};
+		};
+		79EAAF7A2C680A400081A634 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		79EAAF752C6809FA0081A634 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 79EAAF742C6809FA0081A634 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		79EAAF782C680A300081A634 /* Hero */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 79EAAF772C680A300081A634 /* XCRemoteSwiftPackageReference "Hero" */;
+			productName = Hero;
+		};
+		79EAAF7B2C680A400081A634 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 79EAAF7A2C680A400081A634 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		79EAAF3D2C6807720081A634 /* BauBuddy.xcdatamodeld */ = {
