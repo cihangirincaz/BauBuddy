@@ -24,6 +24,7 @@
 		79EAAF762C6809FA0081A634 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 79EAAF752C6809FA0081A634 /* Alamofire */; };
 		79EAAF792C680A300081A634 /* Hero in Frameworks */ = {isa = PBXBuildFile; productRef = 79EAAF782C680A300081A634 /* Hero */; };
 		79EAAF7C2C680A400081A634 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 79EAAF7B2C680A400081A634 /* SnapKit */; };
+		79F143F72C68105000FB9E51 /* QRCodeScannerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F143F62C68104F00FB9E51 /* QRCodeScannerVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,7 @@
 		79EAAF6E2C68094C0081A634 /* HomeTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableView.swift; sourceTree = "<group>"; };
 		79EAAF702C6809600081A634 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		79EAAF722C6809A00081A634 /* MyCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCollectionVC.swift; sourceTree = "<group>"; };
+		79F143F62C68104F00FB9E51 /* QRCodeScannerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeScannerVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 		79EAAF4C2C6807ED0081A634 /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				79F143F32C68102200FB9E51 /* QR Code Scanner */,
 				79EAAF5C2C6808B10081A634 /* Tabbar */,
 				79EAAF5B2C6808A90081A634 /* Home */,
 				79EAAF5A2C6808A10081A634 /* My Collection */,
@@ -257,6 +260,30 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		79F143F32C68102200FB9E51 /* QR Code Scanner */ = {
+			isa = PBXGroup;
+			children = (
+				79F143F52C68103E00FB9E51 /* View */,
+				79F143F42C68103600FB9E51 /* Controller */,
+			);
+			path = "QR Code Scanner";
+			sourceTree = "<group>";
+		};
+		79F143F42C68103600FB9E51 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				79F143F62C68104F00FB9E51 /* QRCodeScannerVC.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		79F143F52C68103E00FB9E51 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -347,6 +374,7 @@
 				79EAAF692C68090F0081A634 /* TopView.swift in Sources */,
 				79EAAF712C6809630081A634 /* HomeVC.swift in Sources */,
 				79EAAF6B2C6809250081A634 /* TabbarController.swift in Sources */,
+				79F143F72C68105000FB9E51 /* QRCodeScannerVC.swift in Sources */,
 				79EAAF732C6809A90081A634 /* MyCollectionVC.swift in Sources */,
 				79EAAF672C6808FB0081A634 /* SettingsVC.swift in Sources */,
 			);
@@ -487,6 +515,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -513,6 +542,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
