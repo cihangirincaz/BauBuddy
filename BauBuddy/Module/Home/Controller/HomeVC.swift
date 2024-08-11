@@ -9,22 +9,22 @@ import UIKit
 import SnapKit
 import Hero
 
-class HomeVC: UIViewController, UITableViewDelegate {
+class HomeVC: UIViewController, UITableViewDelegate , UISearchBarDelegate{
   
     //MARK: Properties
     let searchBar = UISearchBar()
     let tableView = HomeTableView()
+    var filteredTasks: [Task] = []
     //MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         print("Globals data: \(Globals.shared.tasks)")
-        self.tableView.dataSource = self
-        self.tableView.delegate = self
-        self.tableView.reloadData()
+        
         self.navigationController?.isNavigationBarHidden = true
         setupUI()
-        
-        
+        setupTableView()
+        setupSearchBar()
+        filteredTasks = Globals.shared.tasks
     }
     //MARK: Helpers
     func setupUI(){
@@ -44,14 +44,34 @@ class HomeVC: UIViewController, UITableViewDelegate {
             make.left.right.equalToSuperview()
         }
         view.addSubview(tableView)
-        
         tableView.snp.makeConstraints { make in
             make.top.equalTo(searchBar.snp.bottom)
             make.right.left.equalToSuperview()
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
         }
-
     }
+    func setupTableView(){
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.reloadData()
+    }
+    func setupSearchBar() {
+        searchBar.delegate = self
+        searchBar.placeholder = "Search in Tasks"
+        navigationItem.titleView = searchBar
+    }
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+           if searchText.isEmpty {
+               filteredTasks = Globals.shared.tasks
+           } else {
+               filteredTasks = Globals.shared.tasks.filter { task in
+                   task.task.lowercased().contains(searchText.lowercased()) ||
+                   task.title.lowercased().contains(searchText.lowercased()) ||
+                   task.description.lowercased().contains(searchText.lowercased())
+               }
+           }
+           tableView.reloadData()
+       }
     
     //MARK: Actions
     @objc func settingsButtonClicked(){
@@ -67,14 +87,14 @@ class HomeVC: UIViewController, UITableViewDelegate {
 extension HomeVC: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Globals.shared.tasks.count
+        return filteredTasks.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "HomeTableViewCell", for: indexPath) as? HomeTableViewCell else {
             return UITableViewCell()
         }
-        let task = Globals.shared.tasks[indexPath.row]
+        let task = filteredTasks[indexPath.row]
         cell.configure(with: task)
         return cell
     }
