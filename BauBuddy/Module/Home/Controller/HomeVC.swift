@@ -70,9 +70,13 @@ class HomeVC: UIViewController, UITableViewDelegate , UISearchBarDelegate{
                    task.description.lowercased().contains(searchText.lowercased())
                }
            }
-           tableView.reloadData()
-       }
+        tableView.reloadData()
+    }
     
+    func hideKeyboard(){
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tapGesture)
+    }
     //MARK: Actions
     @objc func settingsButtonClicked(){
         let destinationVC = SettingsVC()
@@ -81,6 +85,9 @@ class HomeVC: UIViewController, UITableViewDelegate , UISearchBarDelegate{
         destinationVC.modalPresentationStyle = .fullScreen
         present(destinationVC, animated: true)
     }
+    @objc private func dismissKeyboard() {
+          view.endEditing(true)
+      }
 }
 
 //MARK: Extension + UITableViewDataSource
