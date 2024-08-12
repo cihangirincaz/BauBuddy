@@ -17,18 +17,14 @@ class HomeVC: UIViewController {
     var filteredTasks: [Task] = []
     //MARK: Lifecycle
     override func viewDidAppear(_ animated: Bool) {
-        print("Globals querry 2: \(Globals.shared.qrQuerry)")
-        searchBar.text = Globals.shared.qrQuerry
-
+        super.viewDidAppear(animated)
+        setupSearchBar()
     }
     override func viewDidDisappear(_ animated: Bool) {
         Globals.shared.qrQuerry = ""
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("Globals data: \(Globals.shared.tasks)")
-        print("Globals querry: \(Globals.shared.qrQuerry)")
-        self.navigationController?.isNavigationBarHidden = true
         setupUI()
         setupTableView()
         setupSearchBar()
@@ -38,7 +34,7 @@ class HomeVC: UIViewController {
     //MARK: Helpers
     func setupUI(){
         view.backgroundColor = .systemBackground
-        
+        self.navigationController?.isNavigationBarHidden = true
         let topView = TopView(titleLabel: "Home")
         topView.settingsButton.addTarget(self, action: #selector(settingsButtonClicked), for: .touchUpInside)
         view.addSubview(topView)
@@ -124,6 +120,8 @@ extension HomeVC: UISearchBarDelegate {
         searchBar.text = Globals.shared.qrQuerry
         searchBar.delegate = self
         searchBar.placeholder = "Search in Tasks"
+        searchBar(searchBar, textDidChange: Globals.shared.qrQuerry)
+        tableView.reloadData()
         navigationItem.titleView = searchBar
     }
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
@@ -139,27 +137,5 @@ extension HomeVC: UISearchBarDelegate {
         tableView.reloadData()
     }
 }
-//MARK: Extension + QRCodeScannerDelegate
-//extension HomeVC: QRCodeScannerDelegate {
-//    func didFindQRCode(code: String) {
-//        searchBar.text = code
-//        print("Search Bar Text: \(searchBar.text ?? "")")
-//        searchTasks(query: code)
-//    }
-//    
-//    func openQRCodeScanner() {
-//        let qrScannerVC = QRCodeScannerVC()
-//        qrScannerVC.delegate = self
-//        present(qrScannerVC, animated: true)
-//    }
-//
-//    func searchTasks(query: String) {
-//        filteredTasks = Globals.shared.tasks.filter { task in
-//            task.title.lowercased().contains(query.lowercased()) ||
-//            task.description.lowercased().contains(query.lowercased())
-//        }
-//        searchBar.setNeedsDisplay()
-//        tableView.reloadData()
-//    }
-//}
+
 

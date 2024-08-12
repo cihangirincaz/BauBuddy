@@ -115,7 +115,7 @@
 				79F143F32C68102200FB9E51 /* QR Code Scanner */,
 				79EAAF5C2C6808B10081A634 /* Tabbar */,
 				79EAAF5B2C6808A90081A634 /* Home */,
-				79EAAF5A2C6808A10081A634 /* Registered */,
+				79EAAF5A2C6808A10081A634 /* Saved */,
 				79EAAF5D2C6808B60081A634 /* Settings */,
 			);
 			path = Module;
@@ -163,13 +163,13 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		79EAAF5A2C6808A10081A634 /* Registered */ = {
+		79EAAF5A2C6808A10081A634 /* Saved */ = {
 			isa = PBXGroup;
 			children = (
 				79F143FC2C69EE5200FB9E51 /* View */,
 				79EAAF5E2C6808BF0081A634 /* Controller */,
 			);
-			path = Registered;
+			path = Saved;
 			sourceTree = "<group>";
 		};
 		79EAAF5B2C6808A90081A634 /* Home */ = {
