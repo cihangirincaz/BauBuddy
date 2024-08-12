@@ -8,11 +8,17 @@
 import UIKit
 import AVFoundation
 
+// Delegate Protokolü
+protocol QRCodeScannerDelegate: AnyObject {
+    func didFindQRCode(code: String)
+}
+
 class QRCodeScannerVC: UIViewController {
 
     // MARK: Properties
     var captureSession: AVCaptureSession!
     var previewLayer: AVCaptureVideoPreviewLayer!
+    weak var delegate: QRCodeScannerDelegate?
 
     // MARK: Lifecycle
     override func viewDidLoad() {
@@ -75,10 +81,8 @@ class QRCodeScannerVC: UIViewController {
     // MARK: Helper Methods
     private func found(code: String) {
         print("Found QR code: \(code)")
-        // Burada QR kodunu kullanarak arama sorgusunu tetikleyebilirsiniz
-        // Örneğin:
-        // searchBar.text = code
-        // self.searchTasks(query: code)
+        delegate?.didFindQRCode(code: code) // Delegate üzerinden QR kodunu geri gönder
+        dismiss(animated: true)
     }
 
     // MARK: - UI Settings
@@ -105,3 +109,4 @@ extension QRCodeScannerVC: AVCaptureMetadataOutputObjectsDelegate {
         dismiss(animated: true)
     }
 }
+

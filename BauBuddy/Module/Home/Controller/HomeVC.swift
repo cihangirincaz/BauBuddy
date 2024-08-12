@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import Hero
 
-class HomeVC: UIViewController, UITableViewDelegate , UISearchBarDelegate{
+class HomeVC: UIViewController, UITableViewDelegate , UISearchBarDelegate, QRCodeScannerDelegate{
   
     //MARK: Properties
     let searchBar = UISearchBar()
@@ -25,6 +25,7 @@ class HomeVC: UIViewController, UITableViewDelegate , UISearchBarDelegate{
         setupTableView()
         setupSearchBar()
         filteredTasks = Globals.shared.tasks
+        hideKeyboard()
     }
     //MARK: Helpers
     func setupUI(){
@@ -73,8 +74,31 @@ class HomeVC: UIViewController, UITableViewDelegate , UISearchBarDelegate{
         tableView.reloadData()
     }
     
+    // QRCodeScannerDelegate protokolünden gelen fonksiyon
+    func didFindQRCode(code: String) {
+        searchBar.text = code
+        searchTasks(query: code) // Arama işlemini tetikleyin
+    }
+
+    // QR kod tarayıcısını başlatırken delegate'i ayarla
+    func openQRCodeScanner() {
+        let qrScannerVC = QRCodeScannerVC()
+        qrScannerVC.delegate = self
+        present(qrScannerVC, animated: true)
+    }
+
+    // Arama işlemini gerçekleştiren fonksiyon
+    private func searchTasks(query: String) {
+        filteredTasks = CoreDataHelper.shared.fetchTasks().filter { task in
+            task.title?.lowercased().contains(query.lowercased()) ?? false ||
+            task.descriptionTask?.lowercased().contains(query.lowercased()) ?? false
+        }
+        tableView.reloadData()
+    }
+    
     func hideKeyboard(){
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        tapGesture.cancelsTouchesInView = false
         view.addGestureRecognizer(tapGesture)
     }
     //MARK: Actions
@@ -105,4 +129,26 @@ extension HomeVC: UITableViewDataSource {
         cell.configure(with: task)
         return cell
     }
+    
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//           let selectedTask = filteredTasks[indexPath.row]
+//           print("selected task: \(selectedTask.title)")
+//    }
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+          let selectedTask = filteredTasks[indexPath.row]
+          
+          let saveAction = UIContextualAction(style: .normal, title: "Save") { (action, view, completionHandler) in
+              print("selected task: \(selectedTask.title)")
+              CoreDataHelper.shared.saveTask(task: selectedTask.task,
+                                             title: selectedTask.title,
+                                             descriptionTask: selectedTask.description,
+                                             colorCode: selectedTask.colorCode)
+              completionHandler(true)
+          }
+          
+        saveAction.backgroundColor = .systemGreen
+          
+          let configuration = UISwipeActionsConfiguration(actions: [saveAction])
+          return configuration
+      }
 }

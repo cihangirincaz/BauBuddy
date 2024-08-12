@@ -15,6 +15,7 @@ class MyCollectionVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        fetchCoreData()
     }
     //MARK: Helpers
     func setupUI(){
@@ -28,6 +29,14 @@ class MyCollectionVC: UIViewController {
             make.right.left.equalToSuperview()
             make.height.equalTo(67)
         }
+    }
+    func fetchCoreData(){
+        let tasks = CoreDataHelper.shared.fetchTasks()
+        for task in tasks {
+            print("Görev Başlığı: \(task.title ?? "")")
+            print("Görev Açıklaması: \(task.descriptionTask ?? "")")
+        }
+
     }
     //MARK: Actions
     @objc func settingsButtonClicked(){
