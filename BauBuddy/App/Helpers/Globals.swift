@@ -13,4 +13,5 @@ class Globals {
     private init() {}
 
     var tasks: [Task] = []
+    var qrQuerry = ""
 }

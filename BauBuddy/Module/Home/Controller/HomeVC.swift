@@ -12,14 +12,22 @@ import Hero
 class HomeVC: UIViewController {
   
     //MARK: Properties
-    let searchBar = UISearchBar()
+    var searchBar = UISearchBar()
     let tableView = HomeTableView()
     var filteredTasks: [Task] = []
     //MARK: Lifecycle
+    override func viewDidAppear(_ animated: Bool) {
+        print("Globals querry 2: \(Globals.shared.qrQuerry)")
+        searchBar.text = Globals.shared.qrQuerry
+
+    }
+    override func viewDidDisappear(_ animated: Bool) {
+        Globals.shared.qrQuerry = ""
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         print("Globals data: \(Globals.shared.tasks)")
-        
+        print("Globals querry: \(Globals.shared.qrQuerry)")
         self.navigationController?.isNavigationBarHidden = true
         setupUI()
         setupTableView()
@@ -113,6 +121,7 @@ extension HomeVC: UITableViewDelegate {
 //MARK: Extension + UISearchBarDelegate
 extension HomeVC: UISearchBarDelegate {
     func setupSearchBar() {
+        searchBar.text = Globals.shared.qrQuerry
         searchBar.delegate = self
         searchBar.placeholder = "Search in Tasks"
         navigationItem.titleView = searchBar
@@ -131,22 +140,26 @@ extension HomeVC: UISearchBarDelegate {
     }
 }
 //MARK: Extension + QRCodeScannerDelegate
-extension HomeVC: QRCodeScannerDelegate {
-    func didFindQRCode(code: String) {
-        searchBar.text = code
-        searchTasks(query: code)
-    }
-    func openQRCodeScanner() {
-        let qrScannerVC = QRCodeScannerVC()
-        qrScannerVC.delegate = self
-        present(qrScannerVC, animated: true)
-    }
-
-    func searchTasks(query: String) {
-//        filteredTasks = CoreDataHelper.shared.fetchTasks().filter { task in
-//            task.title?.lowercased().contains(query.lowercased()) ?? false ||
-//            task.descriptionTask?.lowercased().contains(query.lowercased()) ?? false
+//extension HomeVC: QRCodeScannerDelegate {
+//    func didFindQRCode(code: String) {
+//        searchBar.text = code
+//        print("Search Bar Text: \(searchBar.text ?? "")")
+//        searchTasks(query: code)
+//    }
+//    
+//    func openQRCodeScanner() {
+//        let qrScannerVC = QRCodeScannerVC()
+//        qrScannerVC.delegate = self
+//        present(qrScannerVC, animated: true)
+//    }
+//
+//    func searchTasks(query: String) {
+//        filteredTasks = Globals.shared.tasks.filter { task in
+//            task.title.lowercased().contains(query.lowercased()) ||
+//            task.description.lowercased().contains(query.lowercased())
 //        }
+//        searchBar.setNeedsDisplay()
 //        tableView.reloadData()
-    }
-}
+//    }
+//}
+
