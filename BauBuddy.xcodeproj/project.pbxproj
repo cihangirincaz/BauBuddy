@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		798474752C6A0003009429DB /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 798474742C69FFFA009429DB /* UITableView+Extensions.swift */; };
 		79EAAF352C6807720081A634 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79EAAF342C6807720081A634 /* AppDelegate.swift */; };
 		79EAAF3F2C6807720081A634 /* BauBuddy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 79EAAF3D2C6807720081A634 /* BauBuddy.xcdatamodeld */; };
 		79EAAF412C6807730081A634 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 79EAAF402C6807730081A634 /* Assets.xcassets */; };
@@ -20,15 +21,18 @@
 		79EAAF6D2C68093E0081A634 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79EAAF6C2C68093D0081A634 /* HomeTableViewCell.swift */; };
 		79EAAF6F2C6809500081A634 /* HomeTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79EAAF6E2C68094C0081A634 /* HomeTableView.swift */; };
 		79EAAF712C6809630081A634 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79EAAF702C6809600081A634 /* HomeVC.swift */; };
-		79EAAF732C6809A90081A634 /* MyCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79EAAF722C6809A00081A634 /* MyCollectionVC.swift */; };
+		79EAAF732C6809A90081A634 /* RegisteredVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79EAAF722C6809A00081A634 /* RegisteredVC.swift */; };
 		79EAAF762C6809FA0081A634 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 79EAAF752C6809FA0081A634 /* Alamofire */; };
 		79EAAF792C680A300081A634 /* Hero in Frameworks */ = {isa = PBXBuildFile; productRef = 79EAAF782C680A300081A634 /* Hero */; };
 		79EAAF7C2C680A400081A634 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 79EAAF7B2C680A400081A634 /* SnapKit */; };
 		79F143F72C68105000FB9E51 /* QRCodeScannerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F143F62C68104F00FB9E51 /* QRCodeScannerVC.swift */; };
 		79F143F92C683C0B00FB9E51 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F143F82C683C0600FB9E51 /* CoreDataHelper.swift */; };
+		79F143FB2C69EE4100FB9E51 /* RegisteredTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F143FA2C69EE3800FB9E51 /* RegisteredTableView.swift */; };
+		79F143FE2C69EE7F00FB9E51 /* RegisteredTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F143FD2C69EE7E00FB9E51 /* RegisteredTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		798474742C69FFFA009429DB /* UITableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
 		79EAAF312C6807720081A634 /* BauBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BauBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		79EAAF342C6807720081A634 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		79EAAF3E2C6807720081A634 /* BauBuddy.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BauBuddy.xcdatamodel; sourceTree = "<group>"; };
@@ -44,9 +48,11 @@
 		79EAAF6C2C68093D0081A634 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 		79EAAF6E2C68094C0081A634 /* HomeTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableView.swift; sourceTree = "<group>"; };
 		79EAAF702C6809600081A634 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
-		79EAAF722C6809A00081A634 /* MyCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCollectionVC.swift; sourceTree = "<group>"; };
+		79EAAF722C6809A00081A634 /* RegisteredVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisteredVC.swift; sourceTree = "<group>"; };
 		79F143F62C68104F00FB9E51 /* QRCodeScannerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeScannerVC.swift; sourceTree = "<group>"; };
 		79F143F82C683C0600FB9E51 /* CoreDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
+		79F143FA2C69EE3800FB9E51 /* RegisteredTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisteredTableView.swift; sourceTree = "<group>"; };
+		79F143FD2C69EE7E00FB9E51 /* RegisteredTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisteredTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,7 +115,7 @@
 				79F143F32C68102200FB9E51 /* QR Code Scanner */,
 				79EAAF5C2C6808B10081A634 /* Tabbar */,
 				79EAAF5B2C6808A90081A634 /* Home */,
-				79EAAF5A2C6808A10081A634 /* My Collection */,
+				79EAAF5A2C6808A10081A634 /* Registered */,
 				79EAAF5D2C6808B60081A634 /* Settings */,
 			);
 			path = Module;
@@ -126,6 +132,7 @@
 		79EAAF4E2C6808010081A634 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				798474742C69FFFA009429DB /* UITableView+Extensions.swift */,
 				79EAAF562C6808720081A634 /* UIColor+Extensions.swift */,
 			);
 			path = Extensions;
@@ -156,13 +163,13 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		79EAAF5A2C6808A10081A634 /* My Collection */ = {
+		79EAAF5A2C6808A10081A634 /* Registered */ = {
 			isa = PBXGroup;
 			children = (
-				79EAAF5F2C6808C40081A634 /* View */,
+				79F143FC2C69EE5200FB9E51 /* View */,
 				79EAAF5E2C6808BF0081A634 /* Controller */,
 			);
-			path = "My Collection";
+			path = Registered;
 			sourceTree = "<group>";
 		};
 		79EAAF5B2C6808A90081A634 /* Home */ = {
@@ -195,16 +202,9 @@
 		79EAAF5E2C6808BF0081A634 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				79EAAF722C6809A00081A634 /* MyCollectionVC.swift */,
+				79EAAF722C6809A00081A634 /* RegisteredVC.swift */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		79EAAF5F2C6808C40081A634 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		79EAAF602C6808C90081A634 /* Controller */ = {
@@ -283,6 +283,15 @@
 		79F143F52C68103E00FB9E51 /* View */ = {
 			isa = PBXGroup;
 			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		79F143FC2C69EE5200FB9E51 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				79F143FD2C69EE7E00FB9E51 /* RegisteredTableViewCell.swift */,
+				79F143FA2C69EE3800FB9E51 /* RegisteredTableView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -367,6 +376,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				79F143F92C683C0B00FB9E51 /* CoreDataHelper.swift in Sources */,
+				79F143FE2C69EE7F00FB9E51 /* RegisteredTableViewCell.swift in Sources */,
 				79EAAF552C68085D0081A634 /* APIManager.swift in Sources */,
 				79EAAF572C6808730081A634 /* UIColor+Extensions.swift in Sources */,
 				79EAAF592C6808890081A634 /* Globals.swift in Sources */,
@@ -374,12 +384,14 @@
 				79EAAF532C6808300081A634 /* Task.swift in Sources */,
 				79EAAF352C6807720081A634 /* AppDelegate.swift in Sources */,
 				79EAAF6F2C6809500081A634 /* HomeTableView.swift in Sources */,
+				798474752C6A0003009429DB /* UITableView+Extensions.swift in Sources */,
 				79EAAF6D2C68093E0081A634 /* HomeTableViewCell.swift in Sources */,
 				79EAAF692C68090F0081A634 /* TopView.swift in Sources */,
 				79EAAF712C6809630081A634 /* HomeVC.swift in Sources */,
+				79F143FB2C69EE4100FB9E51 /* RegisteredTableView.swift in Sources */,
 				79EAAF6B2C6809250081A634 /* TabbarController.swift in Sources */,
 				79F143F72C68105000FB9E51 /* QRCodeScannerVC.swift in Sources */,
-				79EAAF732C6809A90081A634 /* MyCollectionVC.swift in Sources */,
+				79EAAF732C6809A90081A634 /* RegisteredVC.swift in Sources */,
 				79EAAF672C6808FB0081A634 /* SettingsVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

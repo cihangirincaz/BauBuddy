@@ -32,15 +32,29 @@ class CoreDataHelper {
         }
     }
     
-    func fetchTasks() -> [Tasks] {
-        let fetchRequest = NSFetchRequest<Tasks>(entityName: "Tasks")
-        
-        do {
-            let tasks = try context.fetch(fetchRequest)
-            return tasks
-        } catch {
-            print("Data retrieval error: \(error.localizedDescription)")
-            return []
-        }
-    }
+    func fetchTasks(completion: @escaping ([Tasks]?, Error?) -> Void) {
+          let fetchRequest = NSFetchRequest<Tasks>(entityName: "Tasks")
+          
+          do {
+              let tasks = try context.fetch(fetchRequest)
+              completion(tasks, nil)
+          } catch {
+              completion(nil, error) 
+          }
+      }
+    func deleteTask(task: Task, completion: @escaping (Error?) -> Void) {
+           let fetchRequest: NSFetchRequest<Tasks> = Tasks.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "task == %@ AND title == %@ AND descriptionTask == %@ AND colorCode == %@", task.task, task.title, task.description, task.colorCode)
+           
+           do {
+               let tasksToDelete = try context.fetch(fetchRequest)
+               for taskToDelete in tasksToDelete {
+                   context.delete(taskToDelete)
+               }
+               try context.save()
+               completion(nil)
+           } catch {
+               completion(error)
+           }
+       }
 }

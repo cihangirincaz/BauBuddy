@@ -24,4 +24,12 @@ struct Task {
         self.description = description
         self.colorCode = colorCode
     }
+    
+    //MARK: Alternative init function - for CoreData
+    init(coreDataTask: Tasks) {
+        self.task = coreDataTask.task ?? ""
+        self.title = coreDataTask.title ?? ""
+        self.description = coreDataTask.descriptionTask ?? ""
+        self.colorCode = coreDataTask.colorCode ?? ""
+    }
 }

@@ -22,7 +22,7 @@ class TabbarController: UITabBarController {
     func configureViewControllers(){
         let homeVC = HomeVC()
         homeVC.tabBarItem = UITabBarItem(title: "", image: nil, tag: 0)
-        let registeredVC = MyCollectionVC()
+        let registeredVC = RegisteredVC()
         registeredVC.tabBarItem = UITabBarItem(title: "", image: nil, tag: 1)
         viewControllers = [homeVC, registeredVC]
     }

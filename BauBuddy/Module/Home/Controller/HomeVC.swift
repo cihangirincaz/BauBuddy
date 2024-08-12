@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import Hero
 
-class HomeVC: UIViewController, UITableViewDelegate , UISearchBarDelegate, QRCodeScannerDelegate{
+class HomeVC: UIViewController {
   
     //MARK: Properties
     let searchBar = UISearchBar()
@@ -56,46 +56,6 @@ class HomeVC: UIViewController, UITableViewDelegate , UISearchBarDelegate, QRCod
         tableView.delegate = self
         tableView.reloadData()
     }
-    func setupSearchBar() {
-        searchBar.delegate = self
-        searchBar.placeholder = "Search in Tasks"
-        navigationItem.titleView = searchBar
-    }
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-           if searchText.isEmpty {
-               filteredTasks = Globals.shared.tasks
-           } else {
-               filteredTasks = Globals.shared.tasks.filter { task in
-                   task.task.lowercased().contains(searchText.lowercased()) ||
-                   task.title.lowercased().contains(searchText.lowercased()) ||
-                   task.description.lowercased().contains(searchText.lowercased())
-               }
-           }
-        tableView.reloadData()
-    }
-    
-    // QRCodeScannerDelegate protokolünden gelen fonksiyon
-    func didFindQRCode(code: String) {
-        searchBar.text = code
-        searchTasks(query: code) // Arama işlemini tetikleyin
-    }
-
-    // QR kod tarayıcısını başlatırken delegate'i ayarla
-    func openQRCodeScanner() {
-        let qrScannerVC = QRCodeScannerVC()
-        qrScannerVC.delegate = self
-        present(qrScannerVC, animated: true)
-    }
-
-    // Arama işlemini gerçekleştiren fonksiyon
-    private func searchTasks(query: String) {
-        filteredTasks = CoreDataHelper.shared.fetchTasks().filter { task in
-            task.title?.lowercased().contains(query.lowercased()) ?? false ||
-            task.descriptionTask?.lowercased().contains(query.lowercased()) ?? false
-        }
-        tableView.reloadData()
-    }
-    
     func hideKeyboard(){
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         tapGesture.cancelsTouchesInView = false
@@ -129,20 +89,18 @@ extension HomeVC: UITableViewDataSource {
         cell.configure(with: task)
         return cell
     }
-    
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//           let selectedTask = filteredTasks[indexPath.row]
-//           print("selected task: \(selectedTask.title)")
-//    }
+}
+//MARK: Extension + UITableViewDelegate
+extension HomeVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
           let selectedTask = filteredTasks[indexPath.row]
           
           let saveAction = UIContextualAction(style: .normal, title: "Save") { (action, view, completionHandler) in
-              print("selected task: \(selectedTask.title)")
               CoreDataHelper.shared.saveTask(task: selectedTask.task,
                                              title: selectedTask.title,
                                              descriptionTask: selectedTask.description,
                                              colorCode: selectedTask.colorCode)
+              self.makeAlert(titleInput: "Successful!", messageInput: "Task saved.")
               completionHandler(true)
           }
           
@@ -151,4 +109,44 @@ extension HomeVC: UITableViewDataSource {
           let configuration = UISwipeActionsConfiguration(actions: [saveAction])
           return configuration
       }
+}
+//MARK: Extension + UISearchBarDelegate
+extension HomeVC: UISearchBarDelegate {
+    func setupSearchBar() {
+        searchBar.delegate = self
+        searchBar.placeholder = "Search in Tasks"
+        navigationItem.titleView = searchBar
+    }
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+           if searchText.isEmpty {
+               filteredTasks = Globals.shared.tasks
+           } else {
+               filteredTasks = Globals.shared.tasks.filter { task in
+                   task.task.lowercased().contains(searchText.lowercased()) ||
+                   task.title.lowercased().contains(searchText.lowercased()) ||
+                   task.description.lowercased().contains(searchText.lowercased())
+               }
+           }
+        tableView.reloadData()
+    }
+}
+//MARK: Extension + QRCodeScannerDelegate
+extension HomeVC: QRCodeScannerDelegate {
+    func didFindQRCode(code: String) {
+        searchBar.text = code
+        searchTasks(query: code)
+    }
+    func openQRCodeScanner() {
+        let qrScannerVC = QRCodeScannerVC()
+        qrScannerVC.delegate = self
+        present(qrScannerVC, animated: true)
+    }
+
+    func searchTasks(query: String) {
+//        filteredTasks = CoreDataHelper.shared.fetchTasks().filter { task in
+//            task.title?.lowercased().contains(query.lowercased()) ?? false ||
+//            task.descriptionTask?.lowercased().contains(query.lowercased()) ?? false
+//        }
+//        tableView.reloadData()
+    }
 }
