@@ -9,9 +9,8 @@ import Foundation
 
 class Globals {
     static var shared = Globals()
-
     private init() {}
-
+    
     var tasks: [Task] = []
     var qrQuerry = ""
 }

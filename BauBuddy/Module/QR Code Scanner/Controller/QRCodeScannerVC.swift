@@ -8,30 +8,24 @@
 import UIKit
 import AVFoundation
 
-//protocol QRCodeScannerDelegate: AnyObject {
-//    func didFindQRCode(code: String)
-//}
-
 class QRCodeScannerVC: UIViewController {
 
     // MARK: Properties
     var captureSession: AVCaptureSession!
     var previewLayer: AVCaptureVideoPreviewLayer!
-//    weak var delegate: QRCodeScannerDelegate?
 
     // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCamera()
+        setupUI()
     }
-
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if captureSession?.isRunning == false {
             captureSession.startRunning()
         }
     }
-
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         if captureSession?.isRunning == true {
@@ -39,13 +33,11 @@ class QRCodeScannerVC: UIViewController {
         }
     }
 
-    // MARK: Setup Methods
+    // MARK: Helpers
     private func setupCamera() {
         view.backgroundColor = .black
         captureSession = AVCaptureSession()
-
         guard let videoCaptureDevice = AVCaptureDevice.default(for: .video) else { return }
-        
         do {
             let videoInput = try AVCaptureDeviceInput(device: videoCaptureDevice)
             if captureSession.canAddInput(videoInput) {
@@ -56,7 +48,6 @@ class QRCodeScannerVC: UIViewController {
         } catch {
             return
         }
-
         let metadataOutput = AVCaptureMetadataOutput()
         if captureSession.canAddOutput(metadataOutput) {
             captureSession.addOutput(metadataOutput)
@@ -65,26 +56,53 @@ class QRCodeScannerVC: UIViewController {
         } else {
             return
         }
-
         setupPreviewLayer()
-        captureSession.startRunning()
+        DispatchQueue.global(qos: .userInitiated).async {
+                self.captureSession.startRunning()
+            }
     }
-
+    func setupUI(){
+        let topView = UIView()
+        topView.backgroundColor = UIColor(white: 0, alpha: 0.5)
+        view.addSubview(topView)
+        topView.snp.makeConstraints { make in
+            make.top.left.right.equalToSuperview()
+            make.height.equalToSuperview().multipliedBy(0.16)
+        }
+        let bottomView = UIView()
+        bottomView.backgroundColor = UIColor(white: 0, alpha: 0.5)
+        view.addSubview(bottomView)
+        bottomView.snp.makeConstraints { make in
+            make.left.right.bottom.equalToSuperview()
+            make.height.equalToSuperview().multipliedBy(0.20)
+        }
+        let crossButton = UIButton()
+        crossButton.setImage(.crossButton, for: .normal)
+        crossButton.tintColor = .white
+        crossButton.addTarget(self, action: #selector(crossButtonClicked), for: .touchUpInside)
+        topView.addSubview(crossButton)
+        crossButton.snp.makeConstraints { make in
+            make.left.equalToSuperview().inset(15)
+            make.height.width.equalTo(50)
+            make.top.equalTo(view.safeAreaLayoutGuide).inset(10)
+        }
+        let QRScanImageView = UIImageView()
+        QRScanImageView.image = .qrScan.withRenderingMode(.alwaysTemplate)
+        QRScanImageView.tintColor = .black
+        QRScanImageView.contentMode = .scaleAspectFit
+        view.addSubview(QRScanImageView)
+        QRScanImageView.snp.makeConstraints { make in
+            make.centerX.centerY.equalToSuperview()
+            make.width.height.equalTo(view.frame.width)
+        }
+    }
     private func setupPreviewLayer() {
         previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
         previewLayer.frame = view.layer.bounds
         previewLayer.videoGravity = .resizeAspectFill
         view.layer.addSublayer(previewLayer)
     }
-
-    // MARK: Helper Methods
-    func found(code: String) {
-        print("Found QR code: \(code)")
-        Globals.shared.qrQuerry = code
-//        delegate?.didFindQRCode(code: code)
-        dismiss(animated: true)
-    }
-
+    
     // MARK: - UI Settings
     override var prefersStatusBarHidden: Bool {
         return true
@@ -93,10 +111,21 @@ class QRCodeScannerVC: UIViewController {
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return .portrait
     }
+    //MARK: Actions
+    @objc func crossButtonClicked(){
+        self.hero.modalAnimationType = .slide(direction: .down)
+        dismiss(animated: true, completion: nil)
+    }
 }
 
 // MARK: - AVCaptureMetadataOutputObjectsDelegate
 extension QRCodeScannerVC: AVCaptureMetadataOutputObjectsDelegate {
+    func found(code: String) {
+        print("Found QR code: \(code)")
+        Globals.shared.qrQuerry = code
+        dismiss(animated: true)
+    }
+    
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
         captureSession.stopRunning()
 
@@ -105,7 +134,6 @@ extension QRCodeScannerVC: AVCaptureMetadataOutputObjectsDelegate {
             AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
             found(code: stringValue)
         }
-
         dismiss(animated: true)
     }
 }

@@ -1,5 +1,5 @@
 //
-//  RegisteredVC.swift
+//  SavedVC.swift
 //  BauBuddy
 //
 //  Created by cihangirincaz on 10.08.2024.
@@ -9,15 +9,14 @@ import UIKit
 import SnapKit
 import Hero
 
-class RegisteredVC: UIViewController  {
+class SavedVC: UIViewController  {
     //MARK: Properties
-    let tableView = RegisteredTableView()
-    var registeredTask :[Task] = []
+    let tableView = SavedTableView()
+    var savedTask :[Task] = []
     
     //MARK: Lifecycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        registeredTask.removeAll()
         fetchCoreData()
     }
     override func viewDidLoad() {
@@ -29,7 +28,7 @@ class RegisteredVC: UIViewController  {
     func setupUI(){
         view.backgroundColor = .systemBackground
 
-        let topView = TopView(titleLabel: "Registered")
+        let topView = TopView(titleLabel: "Saved")
         topView.settingsButton.addTarget(self, action: #selector(settingsButtonClicked), for: .touchUpInside)
         view.addSubview(topView)
         topView.snp.makeConstraints { make in
@@ -50,13 +49,14 @@ class RegisteredVC: UIViewController  {
         tableView.reloadData()
     }
     func fetchCoreData() {
+        savedTask.removeAll()
           CoreDataHelper.shared.fetchTasks { tasks, error in
               if let error = error {
                   print("Error occurred during fetch: \(error.localizedDescription)")
               } else if let tasks = tasks {
                   for coreDataTask in tasks {
                       let task = Task(coreDataTask: coreDataTask)
-                      self.registeredTask.append(task)
+                      self.savedTask.append(task)
                   }
               }
           }
@@ -72,33 +72,31 @@ class RegisteredVC: UIViewController  {
     }
 }
 //MARK: Extension + UITableViewDataSource
-extension RegisteredVC: UITableViewDataSource {
-
+extension SavedVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return registeredTask.count
+        return savedTask.count
     }
-
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "RegisteredTableViewCell", for: indexPath) as? RegisteredTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "SavedTableViewCell", for: indexPath) as? SavedTableViewCell else {
             return UITableViewCell()
         }
-        let task = registeredTask[indexPath.row]
+        let task = savedTask[indexPath.row]
         cell.configure(with: task)
         return cell
     }
 }
 //MARK: Extension + UITableViewDelegate
-extension RegisteredVC: UITableViewDelegate {
+extension SavedVC: UITableViewDelegate {
        func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
            
-           let deleteAction = UIContextualAction(style: .destructive, title: "Sil") { [weak self] (action, view, completionHandler) in
+           let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { [weak self] (action, view, completionHandler) in
                guard let self = self else { return }
-               let taskToDelete = self.registeredTask[indexPath.row]
+               let taskToDelete = self.savedTask[indexPath.row]
                CoreDataHelper.shared.deleteTask(task: taskToDelete) { error in
                    if let error = error {
                        print("An error occurred while deleting: \(error.localizedDescription)")
                    } else {
-                       self.registeredTask.remove(at: indexPath.row)
+                       self.savedTask.remove(at: indexPath.row)
                        tableView.deleteRows(at: [indexPath], with: .automatic)
                        self.makeAlert(titleInput: "Successful!", messageInput: "Task deleted.")
                        print("")

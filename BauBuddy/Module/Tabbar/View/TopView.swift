@@ -15,17 +15,14 @@ class TopView: UIView {
     let settingsButton = UIButton()
     
     // MARK: Initializers
-
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupViews()
     }
-    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         setupViews()
     }
-    
     init(titleLabel: String) {
         super.init(frame: .zero)
         setupViews()
@@ -33,7 +30,6 @@ class TopView: UIView {
     }
 
     // MARK: Helpers
-
     private func setupViews() {
         appNameLabel.text = "Bau Buddy"
         appNameLabel.textColor = .placeholder

@@ -22,12 +22,12 @@ class TabbarController: UITabBarController {
     func configureViewControllers(){
         let homeVC = HomeVC()
         homeVC.tabBarItem = UITabBarItem(title: "", image: nil, tag: 0)
-        let registeredVC = RegisteredVC()
-        registeredVC.tabBarItem = UITabBarItem(title: "", image: nil, tag: 1)
-        viewControllers = [homeVC, registeredVC]
+        let savedVC = SavedVC()
+        savedVC.tabBarItem = UITabBarItem(title: "", image: nil, tag: 1)
+        viewControllers = [homeVC, savedVC]
     }
     func setupUI(){
-        tabbarImageView.image = .first
+        tabbarImageView.image = .firstTabbar
         tabbarImageView.contentMode = .scaleAspectFit
         view.addSubview(tabbarImageView)
         tabbarImageView.snp.makeConstraints { make in
@@ -46,9 +46,9 @@ class TabbarController: UITabBarController {
     //MARK: Actions
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         if item.tag == 0 {
-            tabbarImageView.image = .first
+            tabbarImageView.image = .firstTabbar
         } else if item.tag == 1{
-            tabbarImageView.image = .second
+            tabbarImageView.image = .secondTabbar
         }
     }
     @objc func QRButtonClicked(){

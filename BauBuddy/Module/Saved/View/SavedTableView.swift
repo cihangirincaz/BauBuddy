@@ -1,5 +1,5 @@
 //
-//  RegisteredTableView.swift
+//  SavedTableView.swift
 //  BauBuddy
 //
 //  Created by cihangirincaz on 12.08.2024.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class RegisteredTableView: UITableView {
+class SavedTableView: UITableView {
 
     override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: style)
@@ -20,6 +20,6 @@ class RegisteredTableView: UITableView {
     }
 
     private func commonInit() {
-        self.register(RegisteredTableViewCell.self, forCellReuseIdentifier: "RegisteredTableViewCell")
+        self.register(SavedTableViewCell.self, forCellReuseIdentifier: "SavedTableViewCell")
     }
 }

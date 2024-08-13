@@ -33,9 +33,9 @@ class SettingsVC: UIViewController {
         backButton.addTarget(self, action: #selector(backButtonClicked), for: .touchUpInside)
         view.addSubview(backButton)
         backButton.snp.makeConstraints { make in
-            make.left.equalToSuperview().inset(37)
-            make.height.width.equalTo(24)
-            make.top.equalTo(view.safeAreaLayoutGuide).inset(29)
+            make.left.equalToSuperview().inset(11)
+            make.height.width.equalTo(50)
+            make.top.equalTo(view.safeAreaLayoutGuide).inset(16)
         }
     }
     //MARK: Actions

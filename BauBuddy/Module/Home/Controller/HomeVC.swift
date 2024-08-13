@@ -28,7 +28,6 @@ class HomeVC: UIViewController {
         setupUI()
         setupTableView()
         setupSearchBar()
-        filteredTasks = Globals.shared.tasks
         hideKeyboard()
     }
     //MARK: Helpers
@@ -56,6 +55,7 @@ class HomeVC: UIViewController {
         }
     }
     func setupTableView(){
+        filteredTasks = Globals.shared.tasks
         tableView.dataSource = self
         tableView.delegate = self
         tableView.reloadData()
