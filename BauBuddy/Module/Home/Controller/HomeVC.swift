@@ -15,6 +15,8 @@ class HomeVC: UIViewController {
     var searchBar = UISearchBar()
     let tableView = HomeTableView()
     var filteredTasks: [Task] = []
+    let emptyView = EmptyView(titleLabelText: "I am Sorry!\nYou are probably\n experiencing internet problems.", image: .emptyView)
+
     //MARK: Lifecycle
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -29,6 +31,10 @@ class HomeVC: UIViewController {
         setupTableView()
         setupSearchBar()
         hideKeyboard()
+    }
+    override func viewIsAppearing(_ animated: Bool) {
+        super.viewIsAppearing(animated)
+        adjustEmptyView()
     }
     //MARK: Helpers
     func setupUI(){
@@ -53,6 +59,12 @@ class HomeVC: UIViewController {
             make.right.left.equalToSuperview()
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
         }
+        view.addSubview(emptyView)
+        emptyView.snp.makeConstraints { make in
+            make.top.equalTo(searchBar.snp.bottom).offset(20)
+            make.left.right.equalToSuperview()
+            make.centerX.equalToSuperview()
+        }
     }
     func setupTableView(){
         filteredTasks = Globals.shared.tasks
@@ -64,6 +76,15 @@ class HomeVC: UIViewController {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         tapGesture.cancelsTouchesInView = false
         view.addGestureRecognizer(tapGesture)
+    }
+    func adjustEmptyView(){
+        if Globals.shared.tasks.isEmpty {
+            emptyView.isHidden = false
+            tableView.isHidden = true
+        } else {
+            emptyView.isHidden = true
+            tableView.isHidden = false
+        }
     }
     //MARK: Actions
     @objc func settingsButtonClicked(){

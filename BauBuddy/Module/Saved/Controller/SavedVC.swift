@@ -13,6 +13,7 @@ class SavedVC: UIViewController  {
     //MARK: Properties
     let tableView = SavedTableView()
     var savedTask :[Task] = []
+    let emptyView = EmptyView(titleLabelText: "Saved field is empty.\nGo to Home\nand start saving", image: UIImage(resource: .folder).withRenderingMode(.alwaysTemplate) )
     
     //MARK: Lifecycle
     override func viewWillAppear(_ animated: Bool) {
@@ -23,6 +24,10 @@ class SavedVC: UIViewController  {
         super.viewDidLoad()
         setupUI()
         setupTableView()
+    }
+    override func viewIsAppearing(_ animated: Bool) {
+        super.viewIsAppearing(animated)
+        adjustEmptyView()
     }
     //MARK: Helpers
     func setupUI(){
@@ -41,6 +46,13 @@ class SavedVC: UIViewController  {
             make.top.equalTo(topView.snp.bottom)
             make.right.left.equalToSuperview()
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+        }
+        emptyView.imageView.tintColor = .mainColor
+        view.addSubview(emptyView)
+        emptyView.snp.makeConstraints { make in
+            make.top.equalTo(topView.snp.bottom).offset(32)
+            make.width.height.equalTo(view.frame.width*(0.6))
+            make.centerX.equalToSuperview()
         }
     }
     func setupTableView(){
@@ -61,7 +73,16 @@ class SavedVC: UIViewController  {
               }
           }
         tableView.reloadData()
-      }
+    }
+    func adjustEmptyView(){
+        if savedTask.isEmpty {
+            emptyView.isHidden = false
+            tableView.isHidden = true
+        } else {
+            emptyView.isHidden = true
+            tableView.isHidden = false
+        }
+    }
     //MARK: Actions
     @objc func settingsButtonClicked(){
         let destinationVC = SettingsVC()
@@ -101,6 +122,7 @@ extension SavedVC: UITableViewDelegate {
                        self.makeAlert(titleInput: "Successful!", messageInput: "Task deleted.")
                        print("")
                        tableView.reloadData()
+                       self.adjustEmptyView()
                    }
                }
                completionHandler(true)

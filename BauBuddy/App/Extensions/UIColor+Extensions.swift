@@ -9,7 +9,10 @@ import Foundation
 import UIKit
 
 extension UIColor {
+    //MARK: New Color's
     static var placeholder = UIColor(red: 0.709, green: 0.709, blue: 0.709, alpha: 1)
+    static var mainColor = UIColor(red: 0.156, green: 0.301, blue: 0.141, alpha: 1)
+    //MARK: Extensions
     convenience init?(hex: String) {
         var hexSanitized = hex.trimmingCharacters(in: .whitespacesAndNewlines)
         hexSanitized = hexSanitized.replacingOccurrences(of: "#", with: "")

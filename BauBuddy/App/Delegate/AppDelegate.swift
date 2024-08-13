@@ -24,9 +24,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 window.makeKeyAndVisible()
                 self.window = window
                    print("Data was successfully extracted.")
-               } else {
-                   print("Data retrieval failed.")
-               }
+            } else {
+                print("Data retrieval failed.")
+                let window = UIWindow(frame: UIScreen.main.bounds)
+                let rootViewController = TabbarController()
+                let navigationController = UINavigationController(rootViewController: rootViewController)
+                navigationController.setNavigationBarHidden(true, animated: false)
+                window.rootViewController = navigationController
+                window.makeKeyAndVisible()
+                self.window = window
+            }
         }
         return true
     }
