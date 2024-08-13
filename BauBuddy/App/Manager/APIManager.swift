@@ -22,17 +22,11 @@ class APIManager {
             "password": "1"
         ]
 
-        AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON { response in
+        AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseDecodable(of: OAuthResponse.self) { response in
             switch response.result {
-            case .success(let value):
-                if let json = value as? [String: Any],
-                   let oauth = json["oauth"] as? [String: Any],
-                   let token = oauth["access_token"] as? String {
-                    self.accessToken = token
-                    completion(true)
-                } else {
-                    completion(false)
-                }
+            case .success(let oauthResponse):
+                self.accessToken = oauthResponse.oauth.access_token
+                completion(true)
             case .failure:
                 completion(false)
             }
@@ -47,13 +41,11 @@ class APIManager {
             "Authorization": "Bearer \(token)"
         ]
 
-        AF.request(url, method: .get, headers: headers).responseJSON { response in
+        AF.request(url, method: .get, headers: headers).responseDecodable(of: [Task].self) { response in
             switch response.result {
-            case .success(let value):
-                if let jsonArray = value as? [[String: Any]] {
-                    Globals.shared.tasks = jsonArray.compactMap { Task(json: $0) }
-                    completion()
-                }
+            case .success(let tasks):
+                Globals.shared.tasks = tasks
+                completion()
             case .failure:
                 completion()
             }
