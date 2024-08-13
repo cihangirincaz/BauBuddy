@@ -123,7 +123,8 @@ extension QRCodeScannerVC: AVCaptureMetadataOutputObjectsDelegate {
     func found(code: String) {
         print("Found QR code: \(code)")
         Globals.shared.qrQuerry = code
-        dismiss(animated: true)
+        self.hero.modalAnimationType = .slide(direction: .down)
+        dismiss(animated: true, completion: nil)
     }
     
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {

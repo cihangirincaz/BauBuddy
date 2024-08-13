@@ -10,6 +10,7 @@
 		798474752C6A0003009429DB /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 798474742C69FFFA009429DB /* UITableView+Extensions.swift */; };
 		79D4FC302C6ADCAE0037117C /* OAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D4FC2F2C6ADC9B0037117C /* OAuth.swift */; };
 		79D4FC322C6ADFFC0037117C /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D4FC312C6ADFF80037117C /* EmptyView.swift */; };
+		79D4FC352C6AF0680037117C /* SplashVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D4FC342C6AF0640037117C /* SplashVC.swift */; };
 		79EAAF352C6807720081A634 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79EAAF342C6807720081A634 /* AppDelegate.swift */; };
 		79EAAF3F2C6807720081A634 /* BauBuddy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 79EAAF3D2C6807720081A634 /* BauBuddy.xcdatamodeld */; };
 		79EAAF412C6807730081A634 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 79EAAF402C6807730081A634 /* Assets.xcassets */; };
@@ -37,6 +38,7 @@
 		798474742C69FFFA009429DB /* UITableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
 		79D4FC2F2C6ADC9B0037117C /* OAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuth.swift; sourceTree = "<group>"; };
 		79D4FC312C6ADFF80037117C /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
+		79D4FC342C6AF0640037117C /* SplashVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashVC.swift; sourceTree = "<group>"; };
 		79EAAF312C6807720081A634 /* BauBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BauBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		79EAAF342C6807720081A634 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		79EAAF3E2C6807720081A634 /* BauBuddy.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BauBuddy.xcdatamodel; sourceTree = "<group>"; };
@@ -73,6 +75,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		79D4FC332C6AF04C0037117C /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				79D4FC372C6AF07A0037117C /* View */,
+				79D4FC362C6AF0740037117C /* Controller */,
+			);
+			path = Splash;
+			sourceTree = "<group>";
+		};
+		79D4FC362C6AF0740037117C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				79D4FC342C6AF0640037117C /* SplashVC.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		79D4FC372C6AF07A0037117C /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		79EAAF282C6807720081A634 = {
 			isa = PBXGroup;
 			children = (
@@ -116,10 +142,11 @@
 		79EAAF4C2C6807ED0081A634 /* Module */ = {
 			isa = PBXGroup;
 			children = (
-				79F143F32C68102200FB9E51 /* QR Code Scanner */,
+				79D4FC332C6AF04C0037117C /* Splash */,
 				79EAAF5C2C6808B10081A634 /* Tabbar */,
 				79EAAF5B2C6808A90081A634 /* Home */,
 				79EAAF5A2C6808A10081A634 /* Saved */,
+				79F143F32C68102200FB9E51 /* QR Code Scanner */,
 				79EAAF5D2C6808B60081A634 /* Settings */,
 			);
 			path = Module;
@@ -401,6 +428,7 @@
 				79F143F72C68105000FB9E51 /* QRCodeScannerVC.swift in Sources */,
 				79EAAF732C6809A90081A634 /* SavedVC.swift in Sources */,
 				79EAAF672C6808FB0081A634 /* SettingsVC.swift in Sources */,
+				79D4FC352C6AF0680037117C /* SplashVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         APIManager.shared.initializeAppData { success in
             if success {
                 let window = UIWindow(frame: UIScreen.main.bounds)
-                let rootViewController = TabbarController()
+                let rootViewController = SplashVC()
                 let navigationController = UINavigationController(rootViewController: rootViewController)
                 navigationController.setNavigationBarHidden(true, animated: false)
                 window.rootViewController = navigationController
@@ -27,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             } else {
                 print("Data retrieval failed.")
                 let window = UIWindow(frame: UIScreen.main.bounds)
-                let rootViewController = TabbarController()
+                let rootViewController = SplashVC()
                 let navigationController = UINavigationController(rootViewController: rootViewController)
                 navigationController.setNavigationBarHidden(true, animated: false)
                 window.rootViewController = navigationController
