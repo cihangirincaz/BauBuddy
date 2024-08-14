@@ -16,6 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         APIManager.shared.initializeAppData { success in
             if success {
+                CoreDataHelper.shared.deleteAllData(entity: "AllData")
+                CoreDataHelper.shared.saveTasksToCoreData(tasks: Globals.shared.tasks)
                 let window = UIWindow(frame: UIScreen.main.bounds)
                 let rootViewController = SplashVC()
                 let navigationController = UINavigationController(rootViewController: rootViewController)
@@ -23,9 +25,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 window.rootViewController = navigationController
                 window.makeKeyAndVisible()
                 self.window = window
-                   print("Data was successfully extracted.")
+                print("Data was successfully extracted.")
             } else {
                 print("Data retrieval failed.")
+                Globals.shared.tasks = CoreDataHelper.shared.fetchTasks()
                 let window = UIWindow(frame: UIScreen.main.bounds)
                 let rootViewController = SplashVC()
                 let navigationController = UINavigationController(rootViewController: rootViewController)

@@ -16,6 +16,7 @@ class HomeVC: UIViewController {
     let tableView = HomeTableView()
     var filteredTasks: [Task] = []
     let emptyView = EmptyView(titleLabelText: "I am Sorry!\nYou are probably\n experiencing internet problems.", image: .emptyView)
+    var refreshControl: UIRefreshControl!
 
     //MARK: Lifecycle
     override func viewDidAppear(_ animated: Bool) {
@@ -31,6 +32,7 @@ class HomeVC: UIViewController {
         setupTableView()
         setupSearchBar()
         hideKeyboard()
+        refreshController()
     }
     override func viewIsAppearing(_ animated: Bool) {
         super.viewIsAppearing(animated)
@@ -86,6 +88,27 @@ class HomeVC: UIViewController {
             tableView.isHidden = false
         }
     }
+    func refreshController(){
+        refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refreshTableView), for: .valueChanged)
+        tableView.refreshControl = refreshControl
+    }
+    func refreshData(completion: @escaping () -> Void) {
+        APIManager.shared.initializeAppData { success in
+            if success {
+                self.makeAlert(titleInput: "Succesful!", messageInput: "Data was successfully extracted.")
+                DispatchQueue.main.async {
+                    completion()
+                }
+            } else {
+                self.makeAlert(titleInput: "Error!", messageInput: "Data retrieval failed.")
+                DispatchQueue.main.async {
+                    completion()
+                }
+            }
+        }
+    }
+
     //MARK: Actions
     @objc func settingsButtonClicked(){
         let destinationVC = SettingsVC()
@@ -96,16 +119,21 @@ class HomeVC: UIViewController {
     }
     @objc private func dismissKeyboard() {
           view.endEditing(true)
+    }
+    @objc func refreshTableView() {
+          refreshData { [weak self] in
+              self?.filteredTasks = Globals.shared.tasks
+              self?.refreshControl.endRefreshing()
+              self?.tableView.reloadData()
+          }
       }
 }
 
 //MARK: Extension + UITableViewDataSource
 extension HomeVC: UITableViewDataSource {
-
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return filteredTasks.count
     }
-
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "HomeTableViewCell", for: indexPath) as? HomeTableViewCell else {
             return UITableViewCell()
@@ -152,7 +180,8 @@ extension HomeVC: UISearchBarDelegate {
                filteredTasks = Globals.shared.tasks.filter { task in
                    task.task.lowercased().contains(searchText.lowercased()) ||
                    task.title.lowercased().contains(searchText.lowercased()) ||
-                   task.description.lowercased().contains(searchText.lowercased())
+                   task.description.lowercased().contains(searchText.lowercased()) ||
+                   task.colorCode.lowercased().contains(searchText.lowercased())
                }
            }
         tableView.reloadData()
